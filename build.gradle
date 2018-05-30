@@ -1,27 +1,29 @@
 plugins {
     id 'java'
-    id 'maven'
-    id 'com.google.protobuf' version '0.8.5'
+    id 'application'
 }
 
 group = 'network.bisq'
 version = '-SNAPSHOT'
 
-ext {
-    protobufVersion = '3.5.1'
-}
-
 sourceCompatibility = 1.8
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
+mainClassName = 'bisq.httpapi.BisqHttpApiMain'
+
 
 repositories {
     jcenter()
     maven { url 'https://jitpack.io' }
+    maven { url 'https://raw.githubusercontent.com/JesusMcCloud/tor-binary/master/release/' }
 }
 
 dependencies {
     compile 'network.bisq:bisq-core:-SNAPSHOT'
+    runtime 'org.bouncycastle:bcprov-jdk15on:1.56'
+    compileOnly 'org.projectlombok:lombok:1.16.16'
+    annotationProcessor 'org.projectlombok:lombok:1.16.16'
 }
+
+build.dependsOn installDist
+installDist.destinationDir = file('build/app')
+distZip.enabled = false

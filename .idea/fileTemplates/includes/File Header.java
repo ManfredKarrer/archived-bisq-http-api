@@ -14,11 +14,3 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Bisq. If not, see <http://www.gnu.org/licenses/>.
  */
-
-package bisq.grpc;
-
-public class BisqHttpApi {
-
-    public static void main(String[] args) {
-    }
-}
