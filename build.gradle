@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'maven'
+    id 'com.google.protobuf' version '0.8.5'
+}
+
+group = 'network.bisq'
+version = '-SNAPSHOT'
+
+ext {
+    protobufVersion = '3.5.1'
+}
+
+sourceCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    jcenter()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    compile 'network.bisq:bisq-core:-SNAPSHOT'
+}
