@@ -17,8 +17,24 @@
 
 package bisq.httpapi;
 
+import bisq.core.app.BisqDaemon;
+
+import com.google.inject.Injector;
+
 public class BisqHttpApi {
 
-    public static void main(String[] args) {
+    private BisqDaemon bisqDaemon;
+    private Injector injector;
+
+    public BisqHttpApi(BisqDaemon bisqDaemon) {
+        this.bisqDaemon = bisqDaemon;
+    }
+
+    public void setInjector(Injector injector) {
+        this.injector = injector;
+    }
+
+    public void startApplication() {
+
     }
 }

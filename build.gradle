@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'maven'
     id 'application'
 }
 
@@ -8,8 +9,11 @@ version = '-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
-mainClassName = 'bisq.httpapi.BisqHttpApiMain'
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
 
+mainClassName = 'bisq.httpapi.BisqHttpApiMain'
 
 repositories {
     jcenter()
@@ -18,10 +22,24 @@ repositories {
 }
 
 dependencies {
+    compile 'network.bisq:bisq-common:-SNAPSHOT'
+    compile 'network.bisq:bisq-assets:-SNAPSHOT'
     compile 'network.bisq:bisq-core:-SNAPSHOT'
+    compile 'network.bisq:bisq-p2p:-SNAPSHOT'
     runtime 'org.bouncycastle:bcprov-jdk15on:1.56'
     compileOnly 'org.projectlombok:lombok:1.16.16'
-    annotationProcessor 'org.projectlombok:lombok:1.16.16'
+   /* annotationProcessor 'org.projectlombok:lombok:1.16.16'*/
+    testCompile 'junit:junit:4.12'
+    testCompile('org.mockito:mockito-core:2.8.9') {
+        exclude(module: 'objenesis')
+    }
+    testCompile 'org.powermock:powermock-module-junit4:1.7.1'
+    testCompile 'org.powermock:powermock-api-mockito2:1.7.1'
+    testCompile 'org.jmockit:jmockit:1.30'
+    testCompile 'org.springframework:spring-test:4.3.6.RELEASE'
+    testCompile 'com.natpryce:make-it-easy:4.0.1'
+    testCompileOnly 'org.projectlombok:lombok:1.16.16'
+    /*testAnnotationProcessor 'org.projectlombok:lombok:1.16.16'*/
 }
 
 build.dependsOn installDist

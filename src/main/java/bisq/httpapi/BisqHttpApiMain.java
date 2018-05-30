@@ -113,7 +113,6 @@ public class BisqHttpApiMain extends BisqExecutable implements UncaughtException
     @Override
     protected void startApplication() {
         bisqDaemon.startApplication();
-
     }
 
     @Override
