@@ -17,24 +17,22 @@
 
 package bisq.httpapi;
 
-import bisq.core.app.BisqDaemon;
+import bisq.core.app.BisqFacade;
 
-import com.google.inject.Injector;
+import lombok.extern.slf4j.Slf4j;
 
-public class BisqHttpApi {
+/**
+ * HTTP API server. Gets a instance of BisqFacade passed to access data from the running Bisq instance.
+ */
+@Slf4j
+public class BisqHttpApiServer {
+    private BisqFacade bisqFacade;
 
-    private BisqDaemon bisqDaemon;
-    private Injector injector;
-
-    public BisqHttpApi(BisqDaemon bisqDaemon) {
-        this.bisqDaemon = bisqDaemon;
+    public BisqHttpApiServer(BisqFacade bisqFacade) {
+        this.bisqFacade = bisqFacade;
     }
 
-    public void setInjector(Injector injector) {
-        this.injector = injector;
-    }
-
-    public void startApplication() {
-
+    public void blockUntilShutdown() {
+        //TODO
     }
 }
