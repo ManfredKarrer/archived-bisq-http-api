@@ -16,6 +16,7 @@ tasks.withType(JavaCompile) {
 mainClassName = 'bisq.httpapi.BisqHttpApiMain'
 
 repositories {
+    mavenLocal()
     jcenter()
     maven { url 'https://jitpack.io' }
     maven { url 'https://raw.githubusercontent.com/JesusMcCloud/tor-binary/master/release/' }
@@ -34,7 +35,7 @@ dependencies {
     compile "io.dropwizard:dropwizard-jackson:1.2.2"
     compile "io.dropwizard:dropwizard-jersey:1.2.2"
     compile "io.dropwizard:dropwizard-util:1.2.2"
-    
+
     runtime 'org.bouncycastle:bcprov-jdk15on:1.56'
     compileOnly 'org.projectlombok:lombok:1.16.16'
    /* annotationProcessor 'org.projectlombok:lombok:1.16.16'*/
